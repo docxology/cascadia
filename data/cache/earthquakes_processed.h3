@@ -1,0 +1,12 @@
+{
+  "data_source": "earthquakes",
+  "last_processed": "2025-08-26T06:37:31.539973",
+  "h3_resolution": 9,
+  "config": {
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson",
+    "format": "geojson",
+    "description": "Recent earthquakes (last 7 days)",
+    "has_coordinates": true,
+    "value_column": "mag"
+  }
+}

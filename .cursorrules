@@ -1,0 +1,55 @@
+# Cascadia Geospatial Data Integration System Rules
+
+## Core Principles
+- **Modular Architecture**: All code must be organized in reusable, testable modules
+- **Test-Driven Development**: Write tests before or alongside implementation
+- **Data Flow**: Subfolders → Download → Process → Skip if exists → Dashboard integration
+- **H3 Integration**: Use H3 geospatial indexing for all spatial operations
+- **Documentation**: Use understated, "show not tell" documentation style
+
+## Code Standards
+- **Python 3**: Use python3 for all scripts
+- **Real Data**: No mock methods, always use real data analysis
+- **Professional Code**: Functional, intelligent, wise, modular, concise, elegant
+- **Clear Reasoning**: Well-documented, interpretable code with comprehensive rationale
+
+## Project Structure
+```
+cascadia/
+├── src/
+│   ├── data/
+│   │   ├── acquisition.py      # Data downloading and retrieval
+│   │   ├── processing.py       # Data cleaning and H3 integration
+│   │   └── integration.py      # Data merging and preparation
+│   ├── visualization/
+│   │   ├── dashboard.py        # Interactive dashboard
+│   │   └── layers.py           # Toggle layer management
+│   └── utils/
+│       ├── h3_utils.py         # H3 geospatial utilities
+│       └── config.py           # Configuration management
+├── tests/
+│   ├── test_acquisition.py
+│   ├── test_processing.py
+│   ├── test_integration.py
+│   ├── test_dashboard.py
+│   └── test_h3_utils.py
+├── data/
+│   ├── raw/                   # Downloaded source data
+│   ├── processed/             # Processed and H3-indexed data
+│   └── cache/                 # Skip logic cache files
+└── docs/
+    └── examples/              # Usage examples and tutorials
+```
+
+## Testing Requirements
+- 100% test coverage for all modules
+- Tests must correspond to source files (test_*.py for src/*.py)
+- Integration tests for data flow pipelines
+- Performance tests for H3 operations
+
+## Development Workflow
+1. Plan modular structure with clear interfaces
+2. Implement with TDD approach
+3. Test all functionality thoroughly
+4. Document with examples, not explanations
+5. Optimize for performance and maintainability
