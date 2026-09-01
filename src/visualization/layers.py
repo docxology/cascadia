@@ -244,9 +244,12 @@ class LayerManager:
                 invalid_count = (~gdf.geometry.is_valid).sum()
                 validation_result['issues'].append(f'Found {invalid_count} invalid geometries')
 
-            # Validate H3 indices format (basic check)
+            # Validate H3 indices (real cell validity via the h3 library)
             if 'h3_index' in gdf.columns:
-                invalid_h3 = gdf['h3_index'].apply(lambda x: not isinstance(x, str) or len(x) != 16)
+                import h3 as h3_lib
+                invalid_h3 = gdf['h3_index'].apply(
+                    lambda x: not isinstance(x, str) or not h3_lib.is_valid_cell(x)
+                )
                 if invalid_h3.any():
                     validation_result['issues'].append('Invalid H3 index format detected')
 

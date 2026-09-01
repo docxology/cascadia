@@ -31,7 +31,18 @@ def acquire_data(sources: list, force_download: bool = False):
     logger.info(f"Acquiring data for sources: {sources}")
 
     acquirer = DataAcquirer()
-    results = acquirer.acquire_all_sources(force_download=force_download)
+    known_sources = set(config.data_sources.keys())
+    unknown = [s for s in sources if s not in known_sources]
+    if unknown:
+        logger.error(f"Unknown data source(s): {', '.join(unknown)}; "
+                     f"configured sources: {', '.join(sorted(known_sources))}")
+        sys.exit(2)
+
+    results = {}
+    for source_name in sources:
+        results[source_name] = acquirer.acquire_data_source(
+            source_name, force_download=force_download
+        )
 
     successful = 0
     for source_name, file_path in results.items():

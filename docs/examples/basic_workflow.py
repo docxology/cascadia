@@ -29,7 +29,7 @@ def basic_workflow():
     # Step 1: Acquire data
     print("\n📥 Step 1: Acquiring data sources...")
     acquirer = DataAcquirer()
-    sources = ['population', 'infrastructure']
+    sources = ['earthquakes', 'us_states']
 
     acquire_results = acquirer.acquire_all_sources(force_download=False)
 
@@ -57,9 +57,7 @@ def basic_workflow():
     integrator = DataIntegrator()
 
     composite_metrics = {
-        'combined_score': 'population_value + infrastructure_value',
-        'population_density_norm': 'population_value / population_value.max()',
-        'infrastructure_density_norm': 'infrastructure_value / infrastructure_value.max()'
+        'combined_score': 'earthquakes_value + us_states_value',
     }
 
     integrated_data = integrator.create_visualization_dataset(

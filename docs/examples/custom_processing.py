@@ -184,7 +184,7 @@ def custom_workflow_example():
     print("\n🔗 Custom integration...")
     custom_integrator = CustomIntegrator()
 
-    sources = ['population', 'infrastructure', 'environmental']
+    sources = ['earthquakes', 'us_states']
     integrated_data = custom_integrator.create_visualization_dataset(sources)
 
     if integrated_data is not None:

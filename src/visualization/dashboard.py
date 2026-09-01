@@ -65,7 +65,8 @@ class CascadiaDashboard:
             html.Div(id='layer-data-store', style={'display': 'none'}),
 
             # Hidden interval to trigger initial data loading
-            dcc.Interval(id='initial-trigger', interval=100, max_intervals=1, style={'display': 'none'})
+            html.Div(dcc.Interval(id='initial-trigger', interval=100, max_intervals=1),
+                     style={'display': 'none'})
         ])
 
     def setup_callbacks(self):

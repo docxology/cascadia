@@ -8,7 +8,7 @@ A comprehensive, modular system for integrating different geospatial data source
 - **H3 Integration**: Uses H3 geospatial indexing for efficient spatial operations and analysis
 - **Skip Logic**: Intelligent caching system that skips redundant downloads and processing
 - **Interactive Dashboard**: Dash-based interface with clickable toggle layers
-- **Test-Driven**: 100% test coverage with comprehensive test suite
+- **Test-Driven**: comprehensive pytest test suite (run `python cascadia.py test`)
 - **Environment Management**: Uses `uv` for streamlined dependency management
 
 ## Installation
@@ -67,13 +67,13 @@ The system provides a comprehensive CLI for all operations:
 
 ```bash
 # Acquire data sources
-python cascadia.py acquire --sources population infrastructure
+python cascadia.py acquire --sources earthquakes us_states
 
 # Process data with H3 integration
-python cascadia.py process --sources population --force
+python cascadia.py process --sources earthquakes --force
 
 # Integrate multiple data sources
-python cascadia.py integrate --sources population infrastructure
+python cascadia.py integrate --sources earthquakes us_states
 
 # Run interactive dashboard
 python cascadia.py dashboard --port 8050
@@ -99,15 +99,20 @@ Data sources are configured in `src/utils/config.py`:
 
 ```python
 DATA_SOURCES = {
-    "population": {
-        "url": "https://example.com/population.geojson",
-        "format": "geojson",
-        "description": "Global population density data"
+    "world_cities": {
+        "url": "https://raw.githubusercontent.com/datasets/world-cities/master/data/world-cities.csv",
+        "format": "csv",
+        "description": "World cities dataset with population data"
     },
-    "infrastructure": {
-        "url": "https://example.com/infrastructure.geojson",
+    "us_states": {
+        "url": "https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json",
         "format": "geojson",
-        "description": "Infrastructure network data"
+        "description": "US States boundaries"
+    },
+    "earthquakes": {
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson",
+        "format": "geojson",
+        "description": "Recent earthquakes (last 7 days)"
     }
 }
 ```
@@ -120,7 +125,7 @@ DATA_SOURCES = {
 from src.data.acquisition import DataAcquirer
 
 acquirer = DataAcquirer()
-file_path = acquirer.acquire_data_source('population', force_download=False)
+file_path = acquirer.acquire_data_source('earthquakes', force_download=False)
 ```
 
 ### Data Processing
@@ -129,7 +134,7 @@ file_path = acquirer.acquire_data_source('population', force_download=False)
 from src.data.processing import DataProcessor
 
 processor = DataProcessor()
-h3_dataframe = processor.process_data_source('population', 'population_density')
+h3_dataframe = processor.process_data_source('earthquakes', 'magnitude')
 ```
 
 ### Data Integration
@@ -138,9 +143,9 @@ h3_dataframe = processor.process_data_source('population', 'population_density')
 from src.data.integration import DataIntegrator
 
 integrator = DataIntegrator()
-composite_metrics = {'total_score': 'population_density + infrastructure_score'}
+composite_metrics = {'total_score': 'us_states_value + earthquakes_value'}
 integrated_data = integrator.create_visualization_dataset(
-    ['population', 'infrastructure'],
+    ['earthquakes', 'us_states'],
     composite_metrics
 )
 ```
@@ -186,7 +191,7 @@ python -m pytest tests/test_h3_utils.py -v
 ### Best Practices
 
 - All code follows modular, functional programming principles
-- Test-driven development with 100% coverage
+- Test-driven development with a maintained pytest suite
 - Real data analysis (no mock methods)
 - Clear documentation with "show not tell" approach
 - Professional, concise, and elegant code style
@@ -197,15 +202,15 @@ python -m pytest tests/test_h3_utils.py -v
 
 ```python
 # Acquire and process population data
-python cascadia.py acquire --sources population
-python cascadia.py process --sources population
+python cascadia.py acquire --sources earthquakes
+python cascadia.py process --sources earthquakes
 
 # Acquire and process infrastructure data
 python cascadia.py acquire --sources infrastructure
 python cascadia.py process --sources infrastructure
 
 # Integrate both datasets
-python cascadia.py integrate --sources population infrastructure
+python cascadia.py integrate --sources earthquakes us_states
 
 # Launch dashboard
 python cascadia.py dashboard
@@ -216,8 +221,8 @@ python cascadia.py dashboard
 ```python
 # Integrate with custom composite metrics
 python cascadia.py integrate \
-    --sources population infrastructure \
-    --metrics "accessibility_score=(population_density * 0.4 + infrastructure_score * 0.6)"
+    --sources earthquakes us_states \
+    --metrics "combined_score=us_states_value + earthquakes_value"
 ```
 
 ### Custom Development
@@ -227,9 +232,9 @@ python cascadia.py integrate \
 from cascadia import acquire_data, process_data, integrate_data, run_dashboard
 
 # Your custom workflow
-acquire_data(['population', 'infrastructure'])
-process_data(['population', 'infrastructure'])
-integrated = integrate_data(['population', 'infrastructure'])
+acquire_data(['earthquakes', 'us_states'])
+process_data(['earthquakes', 'us_states'])
+integrated = integrate_data(['earthquakes', 'us_states'])
 run_dashboard()
 ```
 
@@ -254,7 +259,7 @@ run_dashboard()
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+License information has not yet been added to this repository.
 
 ## Acknowledgments
 

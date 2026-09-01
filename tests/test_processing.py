@@ -144,7 +144,7 @@ class TestDataProcessor:
         processor = DataProcessor()
 
         with tempfile.TemporaryDirectory() as tmp_dir:
-            cache_path = Path(tmp_dir) / "population_processed.h3"
+            cache_path = Path(tmp_dir) / "population_cache.json"
             processed_path = Path(tmp_dir) / "population_processed.h3"
 
             # Create existing processed data

@@ -66,12 +66,12 @@ class TestConfig:
     def test_data_sources_configuration(self):
         """Test that data sources are properly configured."""
         config = Config()
-        assert 'population' in config.data_sources
-        assert 'infrastructure' in config.data_sources
-        assert 'environment' in config.data_sources
+        assert 'earthquakes' in config.data_sources
+        assert 'us_states' in config.data_sources
+        assert 'world_cities' in config.data_sources
 
         # Test structure of data source configuration
-        population_config = config.data_sources['population']
+        population_config = config.data_sources['earthquakes']
         assert 'url' in population_config
         assert 'format' in population_config
         assert 'description' in population_config

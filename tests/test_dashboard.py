@@ -26,8 +26,12 @@ class TestCascadiaDashboard:
         """Test getting available layers when none exist."""
         dashboard = CascadiaDashboard()
 
-        layers = dashboard.get_available_layers()
-        assert layers == []
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            with patch('src.visualization.dashboard.config') as mock_config:
+                mock_config.processed_data_dir = Path(tmp_dir)
+
+                layers = dashboard.get_available_layers()
+                assert layers == []
 
     def test_get_available_layers_with_files(self):
         """Test getting available layers with existing files."""
@@ -98,7 +102,7 @@ class TestCascadiaDashboard:
 
         assert fig is not None
         assert len(fig.data) == 1  # One trace for population layer
-        assert fig.data[0].name == 'population'
+        assert fig.data[0].name == 'Population'  # display name is title-cased
 
     def test_create_sample_data(self):
         """Test creating sample data for dashboard."""
@@ -117,7 +121,7 @@ class TestCascadiaDashboard:
                     # If the method is not fully implemented, that's okay for testing
                     assert isinstance(e, Exception)
 
-    @patch('src.visualization.dashboard.dash.Dash.run_server')
+    @patch('src.visualization.dashboard.dash.Dash.run')
     def test_run_dashboard(self, mock_run_server):
         """Test running the dashboard server."""
         dashboard = CascadiaDashboard()
