@@ -26,17 +26,20 @@ from src.data.integration import DataIntegrator
 from src.visualization.dashboard import CascadiaDashboard
 from src.utils.config import config, logger
 
-def acquire_data(sources: list, force_download: bool = False):
-    """Acquire data for specified sources."""
-    logger.info(f"Acquiring data for sources: {sources}")
-
-    acquirer = DataAcquirer()
+def _validate_sources(sources: list) -> None:
+    """Exit with error if any source is not configured."""
     known_sources = set(config.data_sources.keys())
     unknown = [s for s in sources if s not in known_sources]
     if unknown:
         logger.error(f"Unknown data source(s): {', '.join(unknown)}; "
                      f"configured sources: {', '.join(sorted(known_sources))}")
         sys.exit(2)
+
+def acquire_data(sources: list, force_download: bool = False):
+    """Acquire data for specified sources."""
+    logger.info(f"Acquiring data for sources: {sources}")
+
+    _validate_sources(sources)
 
     results = {}
     for source_name in sources:
@@ -58,6 +61,8 @@ def process_data(sources: list, force_reprocess: bool = False):
     """Process data for specified sources."""
     logger.info(f"Processing data for sources: {sources}")
 
+    _validate_sources(sources)
+
     processor = DataProcessor()
     results = {}
 
@@ -76,6 +81,8 @@ def process_data(sources: list, force_reprocess: bool = False):
 def integrate_data(sources: list, composite_metrics: dict = None):
     """Integrate processed data sources."""
     logger.info(f"Integrating data for sources: {sources}")
+
+    _validate_sources(sources)
 
     integrator = DataIntegrator()
 

@@ -16,7 +16,7 @@ class DataAcquirer:
 
     def __init__(self):
         self.session = requests.Session()
-        self.session.timeout = config.request_timeout  # Default timeout for all requests
+        self.request_timeout = config.request_timeout
 
         # Set proper headers to avoid blocking
         self.session.headers.update({
@@ -65,7 +65,8 @@ class DataAcquirer:
                     continue
 
                 # Make request with timeout and proper headers
-                response = self.session.get(url, stream=True, allow_redirects=True)
+                response = self.session.get(url, stream=True, allow_redirects=True,
+                                            timeout=self.request_timeout)
                 download_info['status_code'] = response.status_code
                 download_info['content_type'] = response.headers.get('content-type', '')
 

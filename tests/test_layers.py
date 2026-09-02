@@ -84,7 +84,7 @@ class TestLayerManager:
             with patch.object(manager, 'layers_dir', tmp_path.parent):
                 result = manager.load_layer_metadata('test_layer', tmp_path)
 
-                assert result is None  # Method doesn't return anything on success
+                assert result is True  # load_layer_metadata returns success flag
                 assert 'test_layer' in manager.layer_metadata
 
                 metadata = manager.layer_metadata['test_layer']

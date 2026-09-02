@@ -16,7 +16,7 @@ class TestDataAcquirer:
         """Test DataAcquirer initialization."""
         acquirer = DataAcquirer()
         assert acquirer.session is not None
-        assert acquirer.session.timeout == config.request_timeout
+        assert acquirer.request_timeout == config.request_timeout > 0
 
     def test_calculate_file_hash(self):
         """Test file hash calculation."""

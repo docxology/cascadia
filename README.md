@@ -206,8 +206,8 @@ python cascadia.py acquire --sources earthquakes
 python cascadia.py process --sources earthquakes
 
 # Acquire and process infrastructure data
-python cascadia.py acquire --sources infrastructure
-python cascadia.py process --sources infrastructure
+python cascadia.py acquire --sources world_cities
+python cascadia.py process --sources world_cities
 
 # Integrate both datasets
 python cascadia.py integrate --sources earthquakes us_states

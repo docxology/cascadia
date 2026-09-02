@@ -36,8 +36,8 @@ class LayerManager:
 
         return layer_names
 
-    def load_layer_metadata(self, layer_name: str, layer_file: Path):
-        """Load metadata for a specific layer."""
+    def load_layer_metadata(self, layer_name: str, layer_file: Path) -> bool:
+        """Load metadata for a specific layer. Returns True on success."""
         try:
             gdf = gpd.read_file(layer_file)
 
@@ -60,9 +60,11 @@ class LayerManager:
                 }
 
             self.layer_metadata[layer_name] = metadata
+            return True
 
         except Exception as e:
             logger.error(f"Failed to load metadata for layer {layer_name}: {e}")
+            return False
 
     def activate_layer(self, layer_name: str) -> bool:
         """Activate a layer for visualization."""
