@@ -15,7 +15,7 @@ A comprehensive, modular system for integrating different geospatial data source
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/cascadia.git
+   git clone https://github.com/docxology/cascadia.git
    cd cascadia
    ```
 
@@ -102,20 +102,31 @@ DATA_SOURCES = {
     "world_cities": {
         "url": "https://raw.githubusercontent.com/datasets/world-cities/master/data/world-cities.csv",
         "format": "csv",
-        "description": "World cities dataset with population data"
+        "description": "World cities dataset with population data",
+        "has_coordinates": True,
+        "lat_column": "lat",
+        "lon_column": "lng",
+        "value_column": "population"
     },
     "us_states": {
         "url": "https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json",
         "format": "geojson",
-        "description": "US States boundaries"
+        "description": "US States boundaries",
+        "has_coordinates": False,
+        "value_column": "density"
     },
     "earthquakes": {
         "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson",
         "format": "geojson",
-        "description": "Recent earthquakes (last 7 days)"
+        "description": "Recent earthquakes (last 7 days)",
+        "has_coordinates": True,
+        "value_column": "mag"
     }
 }
 ```
+
+The same three names are the only valid values for `--sources`; unknown
+names exit 2 with the configured list.
 
 ## API Usage
 
@@ -165,6 +176,8 @@ Run the comprehensive test suite:
 
 ```bash
 python cascadia.py test
+# or, without the CLI wrapper
+uv run pytest tests/
 ```
 
 Or run specific tests:
@@ -172,6 +185,11 @@ Or run specific tests:
 ```bash
 python -m pytest tests/test_h3_utils.py -v
 ```
+
+The root-level `test_complete_dashboard.py`, `test_dashboard_layers.py`, and
+`test_data_reading.py` are manual smoke scripts (not collected by pytest, which
+is scoped to `tests/` by `pyproject.toml`); they need generated layers under
+`data/processed/layers/` and a running dashboard port.
 
 ## Development
 

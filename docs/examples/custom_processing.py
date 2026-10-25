@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from data.processing import DataProcessor
 from data.integration import DataIntegrator
+from utils.config import config
 from utils.h3_utils import H3Processor
 
 class CustomDataProcessor(DataProcessor):
@@ -26,7 +27,7 @@ class CustomDataProcessor(DataProcessor):
         print(f"Processing environmental data: {source_name}")
 
         # Load raw data
-        raw_path = self.config.get_raw_data_path(source_name, 'geojson')
+        raw_path = config.get_raw_data_path(source_name, 'geojson')
         gdf = self.load_geospatial_data(raw_path)
 
         if gdf is None:
@@ -96,9 +97,7 @@ class CustomIntegrator(DataIntegrator):
         env_data = {}
         for source in sources:
             if 'environmental' in source.lower():
-                df = self.load_processed_sources([source])
-                if df:
-                    env_data[source] = df[source]
+                env_data.update(self.load_processed_sources([source]))
 
         if not env_data:
             print("No environmental data found")

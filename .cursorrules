@@ -32,7 +32,9 @@ cascadia/
 │   ├── test_processing.py
 │   ├── test_integration.py
 │   ├── test_dashboard.py
-│   └── test_h3_utils.py
+│   ├── test_layers.py
+│   ├── test_h3_utils.py
+│   └── test_config.py
 ├── data/
 │   ├── raw/                   # Downloaded source data
 │   ├── processed/             # Processed and H3-indexed data
@@ -42,7 +44,8 @@ cascadia/
 ```
 
 ## Testing Requirements
-- 100% test coverage for all modules
+- Run `uv run pytest tests/` before claiming the suite passes; coverage is not
+  measured in this repo, so do not cite a percentage
 - Tests must correspond to source files (test_*.py for src/*.py)
 - Integration tests for data flow pipelines
 - Performance tests for H3 operations

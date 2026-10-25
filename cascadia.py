@@ -6,9 +6,9 @@ A comprehensive system for integrating different geospatial data sources
 using H3 geospatial indexing with an interactive dashboard for visualization.
 
 Usage:
-    python cascadia.py acquire --sources population infrastructure
-    python cascadia.py process --sources population --force
-    python cascadia.py integrate --sources population infrastructure
+    python cascadia.py acquire --sources earthquakes us_states
+    python cascadia.py process --sources earthquakes --force
+    python cascadia.py integrate --sources earthquakes us_states
     python cascadia.py dashboard --host 127.0.0.1 --port 8050
 """
 
@@ -41,6 +41,7 @@ def acquire_data(sources: list, force_download: bool = False):
 
     _validate_sources(sources)
 
+    acquirer = DataAcquirer()
     results = {}
     for source_name in sources:
         results[source_name] = acquirer.acquire_data_source(
@@ -142,9 +143,9 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s acquire --sources population infrastructure
-  %(prog)s process --sources population --force
-  %(prog)s integrate --sources population infrastructure
+  %(prog)s acquire --sources earthquakes us_states
+  %(prog)s process --sources earthquakes --force
+  %(prog)s integrate --sources earthquakes us_states
   %(prog)s dashboard --port 8050
   %(prog)s test
         """

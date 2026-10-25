@@ -18,11 +18,11 @@ interactive Dash dashboard with toggle layers.
 
 ```bash
 uv sync
-python cascadia.py acquire --sources population infrastructure
-python cascadia.py process --sources population --force
-python cascadia.py integrate --sources population infrastructure
-python cascadia.py dashboard --port 8050
-python cascadia.py test
+uv run python cascadia.py acquire --sources earthquakes us_states
+uv run python cascadia.py process --sources earthquakes --force
+uv run python cascadia.py integrate --sources earthquakes us_states
+uv run python cascadia.py dashboard --port 8050
+uv run pytest tests/
 ```
 
 See the root `README.md` for the full CLI, API, and configuration reference.
@@ -30,4 +30,6 @@ See the root `README.md` for the full CLI, API, and configuration reference.
 ## Example notebooks / scripts
 
 Runnable usage examples live in [`examples/`](examples/) — start with
-`basic_workflow.py`.
+`basic_workflow.py`. `custom_processing.py` is a template: it subclasses
+`DataProcessor`/`DataIntegrator` for an `environmental` source that you must add
+to `src/utils/config.py` first.

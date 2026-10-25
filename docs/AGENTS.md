@@ -8,7 +8,7 @@
 | `src/data/` | `acquisition.py` (downloads), `processing.py` (cleaning + H3), `integration.py` (merging) |
 | `src/visualization/` | `dashboard.py` (Dash app), `layers.py` (toggle layers) |
 | `src/utils/` | `h3_utils.py`, `config.py` — `DATA_SOURCES` dict defines the pipeline inputs |
-| `tests/` | pytest suite (root `README.md` claims full coverage) |
+| `tests/` | pytest suite (collection scoped by `testpaths = ["tests"]`) |
 | `data/` | Local `raw/`, `processed/`, `cache/` trees; safe to regenerate |
 
 ## Conventions observed in this repo

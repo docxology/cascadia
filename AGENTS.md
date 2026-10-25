@@ -16,9 +16,7 @@ integrate layers, and view in a Dash dashboard with toggleable layers.
 | Path | Purpose |
 |---|---|
 | `cascadia.py` | Real CLI entry point (argparse): acquire / process / integrate / dashboard / test. Fixed 2026-08-31: `acquire --sources` now filters to the named sources (unknown names exit 2 with the configured list). |
-| `main.py` | Stub — prints "Hello from cascadia!" only; not a real entry point. |
-| `test_*.py` (root) | Three root-level test scripts: test_complete_dashboard.py, test_dashboard_layers.py, test_data_reading.py (unverified whether run in CI) |
-| `debug_dashboard.py` | Dashboard debugging script (unverified) |
+|`test_*.py`, `debug_dashboard.py` (root)|Manual smoke/debug scripts; not collected by pytest (`testpaths = ["tests"]`), and they need generated layers under `data/processed/layers/`.|
 | `src/data/` | acquisition.py, processing.py, integration.py |
 | `src/visualization/` | dashboard.py (Dash app), layers.py |
 | `src/utils/` | h3_utils.py, config.py (DATA_SOURCES defines pipeline inputs) |
@@ -28,8 +26,7 @@ integrate layers, and view in a Dash dashboard with toggleable layers.
 
 ## Gotchas
 
-- Root `README.md` claims "100% test coverage" — unverified claim; do not repeat it in prose without running the suite.
-- `main.py` is a uv-scaffold stub, not the pipeline entry point.
+- The suite is run with `uv run pytest tests/`; no coverage percentage is measured, so do not claim one.
 - Do not commit anything under `data/`.
 - `__pycache__` dirs are out of scope for documentation.
 
