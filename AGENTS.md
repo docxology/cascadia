@@ -1,9 +1,8 @@
 # cascadia — Agent Guide
 
-LOCAL-ONLY lane under `projects/ongoing/Cascadia/Crescent_City` view:
-`/Volumes/external_drive/Git/template/projects/ongoing/Crescent_City/cascadia`
-(symlink → `/Volumes/external_drive/Git/projects/ongoing/docxology/cascadia`).
-Never commit anything here. Parent policy: `../AGENTS.md`.
+Local-only lane view in the template workspace; never commit template-side files
+from here. This repository is the published `docxology/cascadia`. Parent policy:
+`../AGENTS.md`.
 
 ## What this is
 
