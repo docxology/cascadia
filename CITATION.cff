@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "cascadia"
+authors:
+  - family-names: Friedman
+    given-names: Daniel Ari
+    orcid: "https://orcid.org/0000-0001-6232-9096"
+repository-code: "https://github.com/docxology/cascadia"
+abstract: "Modular Python pipeline for geospatial data integration on the H3 hexagonal grid — downloads sources with caching and retry logic, standardizes them to H3 cells (default resolution 9), merges multiple datasets, and serves togglable layers in a Dash/Plotly dashboard. GeoPandas, uv, with a test suite."
+license: MIT
