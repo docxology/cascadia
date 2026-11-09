@@ -277,7 +277,7 @@ run_dashboard()
 
 ## License
 
-License information has not yet been added to this repository.
+Released under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
