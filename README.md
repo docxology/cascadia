@@ -2,6 +2,8 @@
 
 A comprehensive, modular system for integrating different geospatial data sources using H3 geospatial indexing with an interactive dashboard for visualization.
 
+![Cascadia geospatial pipeline: cached multi-source acquisition, H3 resolution-9 hexagonal indexing, spatial integration, and interactive Dash/Plotly toggle-layer dashboard](docs/assets/overview.svg)
+
 ## Features
 
 - **Modular Architecture**: Clean, testable modules for data acquisition, processing, and visualization

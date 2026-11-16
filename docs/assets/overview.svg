@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="435" viewBox="0 0 960 435" role="img" aria-labelledby="t d">
+<title id="t">Cascadia H3 Geospatial Integration &amp; Visualization Pipeline</title>
+<desc id="d">Modular geospatial pipeline from cached source acquisition through H3 resolution-9 hexagonal indexing to an interactive Dash/Plotly map.</desc>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 1.5L9 5L0 8.5z" fill="#64748b"/></marker></defs>
+<rect x="0" y="0" width="960" height="435" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="20" y="18" width="920" height="64" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" data-card="1"/>
+<rect x="20" y="18" width="6" height="64" rx="3" fill="#0d9488"/>
+<text x="38" y="45" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#0f172a">Cascadia: Geospatial Data Integration &amp; Visualization</text>
+<text x="38" y="67" font-family="system-ui,sans-serif" font-size="12" fill="#475569">Modular H3 hexagonal grid pipeline with intelligent skip-logic caching and Dash/Plotly layers</text>
+<rect x="785" y="27" width="141" height="24" rx="12" fill="#ccfbf1" stroke="#0d9488" stroke-width="1"/>
+<text x="855.5" y="43" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11.5" font-weight="600" fill="#134e4a">H3 Resolution 9</text>
+<rect x="20" y="100" width="218" height="146" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" data-card="1"/>
+<rect x="20" y="100" width="218" height="5" rx="2.5" fill="#2563eb"/>
+<rect x="32" y="110" width="67" height="17" rx="8.5" fill="#ffffff" stroke="#2563eb" stroke-width="0.9"/>
+<text x="65.5" y="122" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="#1e40af">ACQUIRE</text>
+<text x="32" y="143" font-family="system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#1e40af">1. Source Acquisition</text>
+<text x="32" y="161" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">src/data/acquisition.py</text>
+<text x="32" y="179" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Multi-source downloads</text>
+<text x="32" y="197" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Retry &amp; timeout handling</text>
+<text x="32" y="215" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Skip-logic cache checks</text>
+<text x="32" y="233" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">Writes data/raw/ &amp; cache/</text>
+<line x1="238" y1="173" x2="254" y2="173" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="256" y="100" width="218" height="146" rx="9" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.5" data-card="1"/>
+<rect x="256" y="100" width="218" height="5" rx="2.5" fill="#0d9488"/>
+<rect x="268" y="110" width="67" height="17" rx="8.5" fill="#ffffff" stroke="#0d9488" stroke-width="0.9"/>
+<text x="301.5" y="122" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="#115e59">PROCESS</text>
+<text x="268" y="143" font-family="system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#115e59">2. H3 Standardization</text>
+<text x="268" y="161" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">src/data/processing.py</text>
+<text x="268" y="179" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">src/utils/h3_utils.py</text>
+<text x="268" y="197" font-family="system-ui,sans-serif" font-size="12" fill="#334155">CRS &amp; geometry cleaning</text>
+<text x="268" y="215" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Hexagonal cell indexing</text>
+<text x="268" y="233" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">Writes data/processed/</text>
+<line x1="474" y1="173" x2="490" y2="173" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="492" y="100" width="218" height="146" rx="9" fill="#fffbeb" stroke="#d97706" stroke-width="1.5" data-card="1"/>
+<rect x="492" y="100" width="218" height="5" rx="2.5" fill="#d97706"/>
+<rect x="504" y="110" width="82" height="17" rx="8.5" fill="#ffffff" stroke="#d97706" stroke-width="0.9"/>
+<text x="545.0" y="122" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="#92400e">INTEGRATE</text>
+<text x="504" y="143" font-family="system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#92400e">3. Spatial Integration</text>
+<text x="504" y="161" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">src/data/integration.py</text>
+<text x="504" y="179" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Joins datasets by H3 ID</text>
+<text x="504" y="197" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Cross-layer aggregation</text>
+<text x="504" y="215" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Unified GeoDataFrame</text>
+<text x="504" y="233" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Ready for map serving</text>
+<line x1="710" y1="173" x2="726" y2="173" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="728" y="100" width="212" height="146" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5" data-card="1"/>
+<rect x="728" y="100" width="212" height="5" rx="2.5" fill="#7c3aed"/>
+<rect x="740" y="110" width="82" height="17" rx="8.5" fill="#ffffff" stroke="#7c3aed" stroke-width="0.9"/>
+<text x="781.0" y="122" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="#5b21b6">DASHBOARD</text>
+<text x="740" y="143" font-family="system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#5b21b6">4. Interactive Map</text>
+<text x="740" y="161" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">visualization/dashboard.py</text>
+<text x="740" y="179" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">visualization/layers.py</text>
+<text x="740" y="197" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Dash + Plotly web app</text>
+<text x="740" y="215" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Clickable toggle layers</text>
+<text x="740" y="233" font-family="system-ui,sans-serif" font-size="12" fill="#334155">Hexagon hover metrics</text>
+<text x="24" y="272" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#115e59">UNIFIED CLI ENTRYPOINT &amp; CONFIGURATION (cascadia.py)</text>
+<rect x="20" y="284" width="454" height="92" rx="9" fill="#f1f5f9" stroke="#475569" stroke-width="1.5" data-card="1"/>
+<rect x="20" y="284" width="454" height="5" rx="2.5" fill="#475569"/>
+<text x="32" y="309" font-family="system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#1e293b">CLI Orchestration (cascadia.py)</text>
+<rect x="416" y="294" width="48" height="18" rx="9" fill="#ffffff" stroke="#475569" stroke-width="0.9"/>
+<text x="440.0" y="306.5" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="#1e293b">CLI</text>
+<text x="32" y="330" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">acquire | process | integrate | dashboard | test</text>
+<text x="32" y="348" font-family="system-ui,sans-serif" font-size="12" fill="#334155">End-to-end execution with deterministic skip-logic checkpoints</text>
+<rect x="492" y="284" width="448" height="92" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" data-card="1"/>
+<rect x="492" y="284" width="448" height="5" rx="2.5" fill="#16a34a"/>
+<text x="504" y="309" font-family="system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#166534">Shared Config &amp; Test Suite</text>
+<rect x="870" y="294" width="60" height="18" rx="9" fill="#ffffff" stroke="#16a34a" stroke-width="0.9"/>
+<text x="900.0" y="306.5" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="#166534">CONFIG</text>
+<text x="504" y="330" font-family="ui-monospace,monospace" font-size="11.5" fill="#1e293b">src/utils/config.py · H3 resolution &amp; layer settings</text>
+<text x="504" y="348" font-family="system-ui,sans-serif" font-size="12" fill="#334155">GeoPandas + H3 + Dash · verified via pytest suite</text>
+<rect x="20" y="388" width="920" height="36" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1" data-card="1"/>
+<text x="34" y="410.5" font-family="system-ui,sans-serif" font-size="11.5" font-weight="600" fill="#334155">Data Flow: External GIS sources -&gt; data/raw/ -&gt; H3 cell table -&gt; interactive browser layers.</text>
+<text x="926" y="410.5" text-anchor="end" font-family="ui-monospace,monospace" font-size="11.5" fill="#475569">uv + GeoPandas + H3 + Dash</text>
+</svg>
