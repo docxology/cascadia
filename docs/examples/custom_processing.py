@@ -11,13 +11,13 @@ from pathlib import Path
 import pandas as pd
 import geopandas as gpd
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
+# Add the checkout root so src is importable.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from data.processing import DataProcessor
-from data.integration import DataIntegrator
-from utils.config import config
-from utils.h3_utils import H3Processor
+from src.data.processing import DataProcessor
+from src.data.integration import DataIntegrator
+from src.utils.config import config
+from src.utils.h3_utils import H3Processor
 
 class CustomDataProcessor(DataProcessor):
     """Extended data processor with custom logic."""

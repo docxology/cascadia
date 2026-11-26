@@ -1,8 +1,7 @@
 # cascadia — Agent Guide
 
 Local-only lane view in the template workspace; never commit template-side files
-from here. This repository is the published `docxology/cascadia`. Parent policy:
-`../AGENTS.md`.
+from here. This repository is the published `docxology/cascadia`.
 
 ## What this is
 
@@ -32,6 +31,8 @@ integrate layers, and view in a Dash dashboard with toggleable layers.
 ## Verify
 
 ```bash
-uv sync
-uv run pytest tests/
+uv sync --locked --python 3.13
+uv run --no-sync --python 3.13 pytest tests/
 ```
+
+See the [documentation index](docs/README.md) and the [pinned manuscript build](docs/manuscript-build.md).

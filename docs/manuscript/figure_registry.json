@@ -1,0 +1,10 @@
+{
+  "figures": [
+    {
+      "label": "fig:cascadia-overview",
+      "filename": "cascadia-overview.png",
+      "alt_text": "Four panels trace source acquisition, H3 aggregation, integration by cell key, and displayed layers in Dash.",
+      "generated_by": "rsvg-convert from docs/assets/overview.svg"
+    }
+  ]
+}
