@@ -1,0 +1,16 @@
+paper:
+  title: "Cascadia: Geospatial Data Integration with H3"
+  subtitle: "Software methods and an offline verification example"
+  version: "0.1.0"
+authors:
+  - name: "Daniel Ari Friedman"
+    orcid: "0000-0001-6232-9096"
+publication:
+  repository_url: "https://github.com/docxology/cascadia"
+render:
+  formats:
+    pdf: true
+    html: true
+    slides: false
+    docx: false
+    epub: false
